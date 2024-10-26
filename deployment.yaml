@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iris-flask-api-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: iris-flask-api
+  template:
+    metadata:
+      labels:
+        app: iris-flask-api
+    spec:
+      containers:
+      - name: iris-flask-api
+        image: iris-flask-api:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
